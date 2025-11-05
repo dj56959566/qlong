@@ -1,3 +1,22 @@
+# 青龙 + Cloudflare 一键部署脚本
+
+> ⚡ 本项目提供一键部署青龙面板 + Cloudflare + 自动续签证书的脚本，支持原版和 CDN 加速版。
+
+---
+
+## 🚀 一键部署命令
+
+
+1️⃣ 原版命令（raw.githubusercontent）
+
+bash <(curl -fsSL https://raw.githubusercontent.com/dj56959566/qlong/refs/heads/main/set.sh)
+💡 原版命令直接从 GitHub 官方下载，适合海外或网络稳定的用户。
+
+2️⃣ CDN 加速版本命令（国内访问更快）
+
+bash <(curl -fsSL https://cdn.jsdelivr.net/gh/dj56959566/qlong@main/set.sh)
+💡 加速版本使用 JSDelivr 的 GitHub CDN，下载速度更快、更稳定，适合国内用户。
+
 🧩 新增功能
 
 ✅ 在前一个版本基础上新增：

@@ -2,7 +2,8 @@
 
 > ⚡ 本项目提供一键部署青龙面板 + Cloudflare + 自动续签证书的脚本，支持原版和 CDN 加速版。
 
----
+--- 
+官方: `docker pull whyour/qinglong:debian`
 
 ## 🚀 一键部署命令
 

@@ -1,34 +1,24 @@
-FROM debian:bookworm-slim
-
-USER root
+FROM python:3.11-slim
 
 # 安装系统依赖
 RUN apt-get update && apt-get install -y \
-    curl \
-    git \
-    nodejs \
-    npm \
-    python3 \
-    python3-pip \
-    python3-venv \
     tesseract-ocr \
     tesseract-ocr-eng \
-    tesseract-ocr-osd \
+    libjpeg-dev \
+    zlib1g-dev \
+    libfreetype6-dev \
+    libtiff5-dev \
+    libwebp-dev \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# 安装青龙
-RUN git clone https://github.com/whyour/qinglong.git /ql
+# 更新 pip
+RUN pip3 install --upgrade pip
 
-WORKDIR /ql
-
-# 安装 OCR Python 依赖
+# 安装 Python OCR 依赖
 RUN pip3 install --no-cache-dir \
     Pillow \
     requests \
     beautifulsoup4 \
     imap-tools \
     pytesseract
-
-EXPOSE 5700
-
-CMD ["bash","/ql/docker/docker-entrypoint.sh"]

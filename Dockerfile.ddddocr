@@ -1,15 +1,28 @@
-# Dockerfile.ddddocr
-FROM ghcr.io/djkyc/qinglong:2.20.1-debian
+FROM debian:bookworm-slim
 
 USER root
 
-# 安装 Python 环境
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3 python3-pip python3-venv git curl \
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    nodejs \
+    npm \
+    python3 \
+    python3-pip \
+    python3-venv \
     && rm -rf /var/lib/apt/lists/*
 
-# 安装 Python 库 + ddddocr
-RUN pip3 install --no-cache-dir \
-    Pillow requests beautifulsoup4 imap-tools ddddocr
+RUN git clone https://github.com/whyour/qinglong.git /ql
 
-USER qinglong
+WORKDIR /ql
+
+RUN pip3 install --no-cache-dir \
+    Pillow \
+    requests \
+    beautifulsoup4 \
+    imap-tools \
+    ddddocr
+
+EXPOSE 5700
+
+CMD ["bash","/ql/docker/docker-entrypoint.sh"]
